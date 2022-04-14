@@ -6,9 +6,10 @@ def count_words(ignore_whitespace=False):
     data = file.read()
     words = data.split()
     if ignore_whitespace:
-        print("Number of lines: {0}".format(len(words)))
+        print("Number of words (non empty): {0}".format(len(words)))
     else:
-        print("Number of lines (non empty): {0}".format(len(words)))
+        print("Number of words : {0}".format(len(words)))
+
     file.close()
 
 
@@ -24,8 +25,8 @@ def count_lines(ignore_whitespace=False):
                 line_count += 1
         else:
             line_count += 1
-    if ignore_whitespace:
-        print("Number of lines: {0}".format(line_count))
+    if not ignore_whitespace:
+        print("Number of lines : {0}".format(line_count))
     else:
         print("Number of lines (non empty): {0}".format(line_count))
     file.close()
@@ -44,7 +45,8 @@ def count_characters(ignore_whitespace=False):
         else:
             number_of_characters += len(line)
     if ignore_whitespace:
-        print("Number of lines: {0}".format(number_of_characters))
+        print("Number of chars (non empty): {0}".format(number_of_characters))
     else:
-        print("Number of lines (non empty): {0}".format(number_of_characters))
+        print("Number of chars : {0}".format(number_of_characters))
+
     file.close()
