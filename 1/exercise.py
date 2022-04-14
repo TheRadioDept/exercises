@@ -1,15 +1,15 @@
-def count_words(ignore_whitespace):
+def count_words(ignore_whitespace=False):
     """
     Count number of words in "poem.txt"
     """
     file = open("poem.txt", "r")
     data = file.read()
     words = data.split()
-    print("Number of words is {0}".format(len(words)))
+    print("Number of words: {0}".format(len(words)))
     file.close()
 
 
-def count_lines(ignore_whitespace):
+def count_lines(ignore_whitespace=False):
     """
     Count numbers of Non-empty lines in "poem.txt"
     """
@@ -22,11 +22,11 @@ def count_lines(ignore_whitespace):
         else:
             line_count += 1
 
-    print("Number of non empty lines is {0}".format(line_count))
+    print("Number of lines: {0}".format(line_count))
     file.close()
 
 
-def count_characters(ignore_whitespace):
+def count_characters(ignore_whitespace=False):
     """
     Count number of characters in "poem.txt"
     """
@@ -39,5 +39,5 @@ def count_characters(ignore_whitespace):
         else:
             number_of_characters += len(line)
 
-    print("Number of characters in text file is {0}".format(number_of_characters))
+    print("Number of chars: {0}".format(number_of_characters))
     file.close()
