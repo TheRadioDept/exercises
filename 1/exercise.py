@@ -5,7 +5,10 @@ def count_words(ignore_whitespace=False):
     file = open("poem.txt", "r")
     data = file.read()
     words = data.split()
-    print("Number of words: {0}".format(len(words)))
+    if ignore_whitespace:
+        print("Number of lines: {0}".format(len(words)))
+    else:
+        print("Number of lines (non empty): {0}".format(len(words)))
     file.close()
 
 
@@ -21,8 +24,10 @@ def count_lines(ignore_whitespace=False):
                 line_count += 1
         else:
             line_count += 1
-
-    print("Number of lines: {0}".format(line_count))
+    if ignore_whitespace:
+        print("Number of lines: {0}".format(line_count))
+    else:
+        print("Number of lines (non empty): {0}".format(line_count))
     file.close()
 
 
@@ -38,6 +43,8 @@ def count_characters(ignore_whitespace=False):
             number_of_characters += len(line)
         else:
             number_of_characters += len(line)
-
-    print("Number of chars: {0}".format(number_of_characters))
+    if ignore_whitespace:
+        print("Number of lines: {0}".format(number_of_characters))
+    else:
+        print("Number of lines (non empty): {0}".format(number_of_characters))
     file.close()
