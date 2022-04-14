@@ -26,7 +26,3 @@ def char_count():
     number_of_characters = len(data)
 
     print('Number of characters in text file :' + str(number_of_characters))
-
-
-if __name__ == '__main__':
-    globals()[sys.argv[1]]()
