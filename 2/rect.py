@@ -8,8 +8,7 @@ class Rectangle:
         self.number = number
 
     def calculate_area(self):
-        area = self.length * self.width
-        return area
+        return self.length * self.width
 
 
 rectangles = ["first", "second", "third", "forth"]
