@@ -10,7 +10,7 @@ class Rectangle:
     def calculate_area(self, length, width):
         self.length = length
         self.width = width
-        area = self.length + self.width
+        area = self.length * self.width
         return area
 
 
