@@ -24,7 +24,7 @@ def calculation():
     for element in rectangles:
         print(element.length, element.width, sep=" ")
         areas.append(rectangles[i].calculate_area(random.randint(1, 100), random.randint(1, 100)))
-    print(areas)
+    print("Areas of rectangles are : {} ".format(areas))
     max_area = max(areas)
     print("The max area is {}".format(max_area))
     min_area = min(areas)
