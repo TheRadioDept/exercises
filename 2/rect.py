@@ -14,6 +14,7 @@ class Rectangle:
         """
         Function to calculate area of Rectangle
         """
+        
         return self.length * self.width
 
 
@@ -25,6 +26,7 @@ def calculation():
     Function to create four objects of class Rectangle and apply `calculate_area()` function to calculate their areas.
     Then store these calculated areas and find maximum and minimum value out of them.
     """
+    
     areas = []
     for i in range(len(rectangles)):
         rectangles[i] = Rectangle(random.randint(1, 100), random.randint(1, 100))
