@@ -2,12 +2,17 @@ import random
 
 
 class Rectangle:
-    def __init__(self, length, width, number):
+    """
+    create class Rectangle with parameters length and width.
+    """
+    def __init__(self, length, width):
         self.length = length
         self.width = width
-        self.number = number
 
     def calculate_area(self):
+        """
+        Function to calculate area of Rectangle
+        """
         return self.length * self.width
 
 
@@ -15,9 +20,13 @@ rectangles = ["first", "second", "third", "forth"]
 
 
 def calculation():
+    """
+    Function to create four objects of class Rectangle and apply `calculate_area()` function to calculate their areas.
+    Then store these calculated areas and find maximum and minimum value out of them.
+    """
     areas = []
     for i in range(len(rectangles)):
-        rectangles[i] = Rectangle(random.randint(1, 100), random.randint(1, 100), i)
+        rectangles[i] = Rectangle(random.randint(1, 100), random.randint(1, 100))
         areas.append(rectangles[i].calculate_area())
     for element in rectangles:
         print(element.length, element.width, sep=" ")
