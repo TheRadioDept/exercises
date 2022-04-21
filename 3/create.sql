@@ -17,7 +17,7 @@ create table device (
     description varchar not null, 
     brand brand not null,
     type dev_type not null,  
-    code varchar unique 
+    code varchar unique not null
 );
 
 drop table if exists usage; 
