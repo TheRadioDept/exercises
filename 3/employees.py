@@ -1,4 +1,5 @@
 import psycopg2
+import sys
 
 conn = psycopg2.connect("dbname=devices user = postgres password=password1")
 
@@ -11,22 +12,18 @@ def add_employee():
     """
 
     print("Enter the values for the Employee")
-    fname = input()
-    lname = input()
-    emp_email = input()
-    emp_code = input()
+    fname = input("Enter the first name ")
+    lname = input("Enter the last name ")
+    emp_email = input("Enter the email ")
+    emp_code = input("Enter unique code")
     cur.execute(
         "INSERT INTO employee (first_name, last_name, email, code) VALUES (%s, %s, %s, %s);",
-        (fname, lname, emp_email, emp_code)
+        (fname, lname, emp_email, emp_code),
     )
-    # cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
     conn.commit()
     print("done")
     cur.close()
     conn.close()
-
-
-# add_employee()
 
 
 def list_employee():
@@ -44,9 +41,6 @@ def list_employee():
         print("Unique code  = ", row[4], "\n")
 
 
-list_employee()
-
-
 def update_employee():
     """
     Function to update employees information.
@@ -57,17 +51,17 @@ def update_employee():
     new_lname = input("Enter the last name ")
     new_email = input("Enter new email ")
     code = input("Enter code of the employee ")
-    cur.execute(
-        "UPDATE employee SET first_name = %s, last_name = %s, email = %s WHERE code = %s;",
-        (new_name, new_lname, new_email, code)
-    )
-    conn.commit()
-    print("done")
-    cur.close()
-    conn.close()
-
-
-# update_employee()
+    if code == "":
+        print("Code cannot be empty")
+    else:
+        cur.execute(
+            "UPDATE employee SET first_name = %s, last_name = %s, email = %s WHERE code = %s;",
+            (new_name, new_lname, new_email, code),
+        )
+        conn.commit()
+        print("done")
+        cur.close()
+        conn.close()
 
 
 def delete_employee():
@@ -84,4 +78,5 @@ def delete_employee():
     conn.close()
 
 
-# delete_employee()
+if __name__ == "__main__":
+    globals()[sys.argv[1]]()
