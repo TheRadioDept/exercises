@@ -1,11 +1,22 @@
-from black import main
 import psycopg2
 import sys
 
 
-def all():
-    conn = psycopg2.connect("dbname = devices user = postgres password = password1")
-    cur = conn.cursor()
+if len(sys.argv) == 1:
+    print("Please call a function")
+    sys.exit()
+elif len(sys.argv) > 3:
+    print("Too many parameters!")
+    sys.exit()
+else:
+    arg = sys.argv[1]
+
+
+def all(conn, cur):
+    """
+    Function to list all usage for employee code
+    """
+
     try:
         code = sys.argv[2]
         cur.execute(
@@ -22,9 +33,11 @@ def all():
     conn.close()
 
 
-def check_in():
-    conn = psycopg2.connect("dbname = devices user = postgres password = password1")
-    cur = conn.cursor()
+def check_in(conn, cur):
+    """
+    Function to list all check-in for employee code
+    """
+
     try:
         check_code = sys.argv[2]
         cur.execute(
@@ -32,7 +45,7 @@ def check_in():
             "employee.code, usage.id, usage.device_id,  usage.date  "
             "from employee left join usage on employee.id = employee_id where type = 'CHECK_IN' and code = %(str)s ;",
             {"str": check_code},
-            )
+        )
         record = cur.fetchall()
         for row in record:
             print(("{} " * len(row)).format(*row))
@@ -43,9 +56,11 @@ def check_in():
     conn.close()
 
 
-def check_out():
-    conn = psycopg2.connect("dbname = devices user = postgres password = password1")
-    cur = conn.cursor()
+def check_out(conn, cur):
+    """
+    Function to list all check-out for employee code
+    """
+
     try:
         check_code = sys.argv[2]
         cur.execute(
@@ -64,9 +79,16 @@ def check_out():
     conn.close()
 
 
-if sys.argv[1] == "all":
-    all()
-elif sys.argv[1] == "check_in":
-    check_in()
-elif sys.argv[1] == "check_out":
-    check_out()
+def main():
+    conn = psycopg2.connect("dbname = devices user = postgres password = password1")
+    cur = conn.cursor()
+    if sys.argv[1] == "all":
+        all(conn, cur)
+    elif sys.argv[1] == "check_in":
+        check_in(conn, cur)
+    elif sys.argv[1] == "check_out":
+        check_out(conn, cur)
+
+
+if __name__ == "__main__":
+    main()
